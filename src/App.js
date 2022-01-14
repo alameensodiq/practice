@@ -3,6 +3,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import { Products, Navbar, Cart } from './components';
 import { commerce } from './lib/commerce';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
 
@@ -36,11 +37,15 @@ function App() {
 
  
   return (
-    <div className="App">
+    <Router>
+      <div>
       <Navbar  totalItems ={cart.total_items}/>
-      {/* <Products products={products}  onAddToCart ={handleAddCart}/> */}
-      <Cart cart={cart}/>
+      <Routes>
+        <Route exact path='/' element={<Products products={products}  onAddToCart ={handleAddCart}/>} />
+        <Route exact path='/cart' element={<Cart cart={cart}/>}/>
+      </Routes>
     </div>
+    </Router>
   );
 }
 
