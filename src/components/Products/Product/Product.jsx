@@ -5,7 +5,7 @@ import useStyles from './styles'
 
 
 
-const Product = ({product}) => {
+const Product = ({product, onAddToCart}) => {
 
     console.log(product)
 
@@ -25,7 +25,7 @@ const Product = ({product}) => {
                 <Typography dangerouslySetInnerHTML={{__html: product.description}} variant="body2" color="textSecondary" />
             </CardContent> 
             <CardActions disableSpacing className={classes.cardActions}>
-                <IconButton aria-label='Add to Cart'>
+                <IconButton aria-label='Add to Cart' onClick={()=> onAddToCart(product.id )}>
                   <AddShoppingCart />
                 </IconButton>
             </CardActions>  
